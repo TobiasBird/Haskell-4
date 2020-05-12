@@ -24,15 +24,15 @@ rankC (POP k) = (k,k) -- removes however many listed
 -- Call rankC like so ... rankC (LD 4) .. or .. rankC ADD .. or .. rankC (POP 3)
 
 -- Having a hard time figuring out the right way to do this.
-rankP :: Prog -> Rank
+rankP :: Prog -> Maybe Rank
 rankP something = (rank something 0)
 
-rank :: Prog -> Rank -> Rank
-rank [] r = 0
-rank (x:xs) r = (r + getRank (rankC x)) + rank xs r
+rank :: Prog -> Rank -> Maybe Rank
+rank [] r = Just r
+rank (x:xs) r = if (Just (getRank (rankC x)) >= 0) then (Just ( (r + getRank (rankC x)) + (rank xs r)) ) else (Nothing)
 
-getRank :: CmdRank -> Int
-getRank (x,y) = (y-x)
+getRank :: CmdRank -> Rank
+getRank (x,y) =  (y-x)
 
 -- exercise 2 --
 
