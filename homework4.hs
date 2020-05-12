@@ -21,6 +21,18 @@ rankC INC = (1,1)
 rankC SWAP = (2,2)
 rankC (POP k) = (k,k) -- removes however many listed
 
+-- Call rankC like so ... rankC (LD 4) .. or .. rankC ADD .. or .. rankC (POP 3)
+
+-- Having a hard time figuring out the right way to do this.
+-- rankP :: Prog -> Maybe Rank
+-- rankP [] = Just 0
+-- rankP xs = rank xs 0
+
+-- rank :: Prog -> Rank -> Maybe Rank
+-- rank (x:xs) r = case (x:xs) of
+--  		Just (x:xs) -> Just ( )
+-- 		_ 				-> Nothing
+
 -- exercise 2 --
 
 data Shape = X
