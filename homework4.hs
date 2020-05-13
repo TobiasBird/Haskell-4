@@ -22,8 +22,16 @@ maxy y1 y2 = if y1>y2 then y1 else y2
 bbox :: Shape -> BBox
 bbox X = (1,1)
 bbox (TD s1 s2) = ((maxx x1 x2), y1 + y2)
-				where (x1,y1) = bbox s1
+				  where 
+					  (x1,y1) = bbox s1
 					  (x2,y2) = bbox s2
-bbox (LR s1 s2) = ((x1 + x2), maxy y1 y2)
-				where (x1,y1) = bbox s1
+bbox (LR s1 s2) = ((x1 + x2), (maxy y1 y2))
+				  where 
+					  (x1,y1) = bbox s1
 					  (x2,y2) = bbox s2
+
+-- b --
+--rect :: Shape -> Maybe BBox
+--rect X =
+--rect (TD s1 s2)
+--rect (LR s1 s2)
