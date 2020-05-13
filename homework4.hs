@@ -31,7 +31,13 @@ bbox (LR s1 s2) = ((x1 + x2), (maxy y1 y2))
 					  (x2,y2) = bbox s2
 
 -- b --
---rect :: Shape -> Maybe BBox
---rect X =
---rect (TD s1 s2)
---rect (LR s1 s2)
+rect :: Shape -> Maybe BBox
+rect X = Just (1,1)
+rect (TD s1 s2) = if x1==x2 then Just (x1,y1+y2) else Nothing
+				where
+					(x1,y1) = bbox s1
+					(x2,y2) = bbox s2
+rect (LR s1 s2) = if y1==y2 then Just (x1+x2,y1) else Nothing
+				where
+					(x1,y1) = bbox s1
+					(x2,y2) = bbox s2
